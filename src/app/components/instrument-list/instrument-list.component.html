@@ -1,0 +1,25 @@
+<div class="ion-padding custom-skeleton" *ngIf="!instruments">
+  <ion-skeleton-text animated style="width: 60%"></ion-skeleton-text>
+  <ion-skeleton-text animated></ion-skeleton-text>
+  <ion-skeleton-text animated style="width: 88%"></ion-skeleton-text>
+  <ion-skeleton-text animated style="width: 70%"></ion-skeleton-text>
+  <ion-skeleton-text animated style="width: 60%"></ion-skeleton-text>
+</div>
+
+<ion-grid *ngIf="instruments">
+  <ion-row>
+    <ion-col *ngFor="let instrument of instruments">
+      <ion-card class="card">
+        <img class="imgurl" src="{{ instrument.imagem }}" alt="">
+        <ion-card-header>
+          <ion-card-subtitle class="title">{{ instrument.descricao }}</ion-card-subtitle>
+          <ion-card-title class="subtitle">{{ instrument.preco | currency: 'BRL' }}</ion-card-title>
+        </ion-card-header>
+        <ion-button ion-item expand="full" class="button" color="success" (click)="add(instrument)">
+          <ion-icon name="cart" slot="start"></ion-icon>
+          <ion-label>Adicionar</ion-label>
+        </ion-button>
+      </ion-card>
+    </ion-col>
+  </ion-row>
+</ion-grid>
